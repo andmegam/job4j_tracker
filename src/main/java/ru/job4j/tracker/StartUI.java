@@ -1,9 +1,12 @@
 package ru.job4j.tracker;
 
+import java.time.format.DateTimeFormatter;
+
 public class StartUI {
 
     public static void main(String[] args) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         Item item = new Item();
-        System.out.println(item.getCreatedStr());
+        System.out.println(item.getCreated().format(formatter));
     }
 }
