@@ -24,6 +24,7 @@ public class Library {
         for (Book element : books) {
             System.out.println("Book: " + element.getBookName() + " Has " + element.getPagesCount() + " pages");
         }
+        System.out.println("");
     }
 
 }
