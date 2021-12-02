@@ -3,10 +3,10 @@ package ru.job4j.inheritance;
 import java.util.Date;
 
 public class Profession {
-    String name;
-    String surname;
-    String education;
-    Date birthday;
+    private String name;
+    private String surname;
+    private String education;
+    private Date birthday;
 
     public Profession(String name, String surname, String education, Date birthday) {
         this.name = name;
