@@ -25,7 +25,7 @@ public class Bus implements Transport {
 
     @Override
     public double refuel(int petrolLiter) {
-        double oilPrice = 49.56;
+        double oilPrice = 49.55;
         return petrolLiter * oilPrice;
     }
 }
