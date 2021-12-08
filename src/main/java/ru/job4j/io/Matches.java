@@ -4,11 +4,10 @@ import java.util.Scanner;
 
 public class Matches {
 
-    private static int count = 11;
-    private static boolean turn = true;
-    private static Scanner input = new Scanner(System.in);
-
     public static void main(String[] args) {
+        int count = 11;
+        boolean turn = true;
+        Scanner input = new Scanner(System.in);
         System.out.println("Игра 11.");
         while (count > 0) {
             String player = turn ? "Первый игрок" : "Второй игрок";
