@@ -18,6 +18,8 @@ public class Matches {
                 System.out.println(player + " ввел " + matches);
                 count -= matches;
                 System.out.println("Остаток: " + Math.max(0, count));
+            } else {
+                System.out.println("Введено некорректное значение пункта меню.");
             }
         }
         if (!turn) {
