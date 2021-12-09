@@ -10,6 +10,6 @@ public class FindMaxLength {
                 max = el.length();
             }
         }
-        System.out.println("Max length : " + max);
+        System.out.println("Max length: " + max);
     }
 }
