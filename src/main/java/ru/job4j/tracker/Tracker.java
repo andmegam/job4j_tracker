@@ -25,12 +25,11 @@ public class Tracker {
     }
 
     public boolean delete(int id) {
-        boolean rsl = false;
         int index = indexOf(id);
         if (index >= 0) {
-            rsl = items.remove(index) != null;
+            items.remove(index);
         }
-        return rsl;
+        return index != -1;
     }
 
     private int indexOf(int id) {
