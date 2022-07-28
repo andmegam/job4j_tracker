@@ -1,5 +1,7 @@
 package ru.job4j.bank;
 
+import java.util.Objects;
+
 public class User {
     private String passport;
     private String username;
@@ -17,15 +19,13 @@ public class User {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         User user = (User) o;
-
-        return passport != null ? passport.equals(user.passport) : user.passport == null;
+        return Objects.equals(passport, user.passport);
     }
 
     @Override
     public int hashCode() {
-        return passport != null ? passport.hashCode() : 0;
+        return Objects.hash(passport);
     }
 
     public String getPassport() {

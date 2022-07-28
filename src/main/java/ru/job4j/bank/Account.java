@@ -1,5 +1,7 @@
 package ru.job4j.bank;
 
+import java.util.Objects;
+
 public class Account {
     private String requisite;
     private double balance;
@@ -17,15 +19,13 @@ public class Account {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Account account = (Account) o;
-
-        return requisite != null ? requisite.equals(account.requisite) : account.requisite == null;
+        return Objects.equals(requisite, account.requisite);
     }
 
     @Override
     public int hashCode() {
-        return requisite != null ? requisite.hashCode() : 0;
+        return Objects.hash(requisite);
     }
 
     public String getRequisite() {
