@@ -1,5 +1,7 @@
 package ru.job4j.collection;
 
+import java.util.Objects;
+
 public class Order {
 
     private String number;
@@ -30,19 +32,13 @@ public class Order {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-
         Order order = (Order) o;
-
-        if (number != null ? !number.equals(order.number) : order.number != null) {
-            return false;
-        }
-        return name != null ? name.equals(order.name) : order.name == null;
+        return Objects.equals(number, order.number) && Objects.equals(name, order.name);
     }
 
     @Override
     public int hashCode() {
-        int result = number != null ? number.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
+        return Objects.hash(number, name);
     }
+
 }
