@@ -25,23 +25,10 @@ public class AnalyzeByMap {
     }
 
     public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
-        Map<String, Integer> map = new HashMap<>();
         List<Label> labels = new ArrayList<>();
-        int countPupil = 0;
-        for (Pupil pupil : pupils) {
-            for (Subject subject : pupil.getSubjects()) {
-                if (subject != null) {
-                    if (!map.containsKey(subject.getName())) {
-                        map.put(subject.getName(), subject.getScore());
-                    } else {
-                        map.put(subject.getName(), map.get(subject.getName()) + subject.getScore());
-                    }
-                }
-            }
-            countPupil++;
-        }
-        for (Map.Entry<String, Integer> item : map.entrySet()) {
-            labels.add(new Label(item.getKey(), (double) item.getValue() / countPupil));
+        Map<String, Integer> mapSubject = getMapSubject(pupils);
+        for (Map.Entry<String, Integer> item : mapSubject.entrySet()) {
+            labels.add(new Label(item.getKey(), (double) item.getValue() / mapSubject.entrySet().size()));
         }
         return labels;
     }
@@ -61,8 +48,18 @@ public class AnalyzeByMap {
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
-        Map<String, Integer> map = new HashMap<>();
         List<Label> labels = new ArrayList<>();
+        Map<String, Integer> mapSubject = getMapSubject(pupils);
+        for (Map.Entry<String, Integer> item : mapSubject.entrySet()) {
+            labels.add(new Label(item.getKey(), item.getValue()));
+        }
+
+        labels.sort(Comparator.naturalOrder());
+        return labels.get(labels.size() - 1);
+    }
+
+    private static Map<String, Integer> getMapSubject(List<Pupil> pupils) {
+        Map<String, Integer> map = new HashMap<>();
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.getSubjects()) {
                 if (subject != null) {
@@ -74,11 +71,6 @@ public class AnalyzeByMap {
                 }
             }
         }
-        for (Map.Entry<String, Integer> item : map.entrySet()) {
-            labels.add(new Label(item.getKey(), item.getValue()));
-        }
-
-        labels.sort(Comparator.naturalOrder());
-        return labels.get(labels.size() - 1);
+        return map;
     }
 }
