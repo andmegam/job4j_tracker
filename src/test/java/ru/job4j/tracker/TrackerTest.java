@@ -2,11 +2,14 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TrackerTest {
     @Test
@@ -91,4 +94,39 @@ public class TrackerTest {
         assertThat(tracker.findById(id), is(nullValue()));
     }
 
+    @Test
+    public void whenTestItemAscByName() {
+        List<Item> items = new ArrayList<Item>();
+        items.add(new Item("1-Первый"));
+        items.add(new Item("3-Третий"));
+        items.add(new Item("2-Второй"));
+        items.add(new Item("5-Пятый"));
+        items.add(new Item("4-Четвертый"));
+        Collections.sort(items, new ItemAscByName());
+        List<Item> expected = new ArrayList<Item>();
+        expected.add(new Item("1-Первый"));
+        expected.add(new Item("2-Второй"));
+        expected.add(new Item("3-Третий"));
+        expected.add(new Item("4-Четвертый"));
+        expected.add(new Item("5-Пятый"));
+        assertEquals(expected, items);
+    }
+
+    @Test
+    public void whenTestItemDescByName() {
+        List<Item> items = new ArrayList<Item>();
+        items.add(new Item("1-Первый"));
+        items.add(new Item("3-Третий"));
+        items.add(new Item("2-Второй"));
+        items.add(new Item("5-Пятый"));
+        items.add(new Item("4-Четвертый"));
+        Collections.sort(items, new ItemDescByName());
+        List<Item> expected = new ArrayList<Item>();
+        expected.add(new Item("5-Пятый"));
+        expected.add(new Item("4-Четвертый"));
+        expected.add(new Item("3-Третий"));
+        expected.add(new Item("2-Второй"));
+        expected.add(new Item("1-Первый"));
+        assertEquals(expected, items);
+    }
 }

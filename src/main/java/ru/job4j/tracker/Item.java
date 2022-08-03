@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
+import java.util.Objects;
 
 public class Item {
     private int id;
@@ -39,6 +41,23 @@ public class Item {
 
     public LocalDateTime getCreated() {
         return created;
+    }
+
+    @Override
+    public boolean equals(Object k) {
+        if (this == k) {
+            return true;
+        }
+        if (k == null || getClass() != k.getClass()) {
+            return false;
+        }
+        Item item = (Item) k;
+        return id == item.id && name.equals(item.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     @Override
