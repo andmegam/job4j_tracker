@@ -30,6 +30,9 @@ public class PasswordValidator {
             if (!Character.isLetterOrDigit(password.charAt(i))) {
                 specialChar = true;
             }
+            if (upper && lower && digit && specialChar) {
+                break;
+            }
         }
         if (!upper) {
             throw new IllegalArgumentException("Пароль должен содержать хотя бы один символ в верхнем регистре.");
