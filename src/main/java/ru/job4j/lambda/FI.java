@@ -6,7 +6,7 @@ import java.util.List;
 
 public class FI {
     public static void main(String[] args) {
-        List<String> listStr = Arrays.asList("Саратов", "Москва", "Ялта", "Абаран", "Волгоград", "Петропавловск-Камчатский");
+        List<String> listStr = Arrays.asList("Саратов", "Москва", "Ялта", "Абакан", "Волгоград", "Петропавловск-Камчатский");
 
         Comparator<String> cmpText = (left, right) -> left.compareTo(right);
         listStr.sort(cmpText);
