@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.function.Predicate;
 
 public class PhoneDictionary {
-    private ArrayList<Person> persons = new ArrayList<>();
+    private ArrayList<Person> persons = new ArrayList<Person>();
 
     public void add(Person person) {
         this.persons.add(person);
@@ -25,8 +25,8 @@ public class PhoneDictionary {
                 .or(predSurname
                         .or(predPhone
                                 .or(predAddress)));
-        ArrayList<Person> result = new ArrayList<>();
-        for (Person person : persons) {
+        var result = new ArrayList<Person>();
+        for (var person : persons) {
             if (combine.test(person)) {
                 result.add(person);
             }
